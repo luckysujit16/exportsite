@@ -35,21 +35,36 @@ const PRODUCTS = [
 export default function Products() {
   return (
     <section id="products" className="bg-ink text-white">
-      <div className="max-w-7xl mx-auto px-5 md:px-8 py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-5 md:px-8 py-20 md:py-28">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+        {/* Left Content */}
         <Reveal className="max-w-2xl">
           <p className="eyebrow text-[12px] tracking-[0.25em] text-primary font-semibold mb-4">
             OUR PRODUCTS
           </p>
+
           <h2 className="font-display font-semibold text-3xl md:text-4xl leading-tight">
             Premium-quality agricultural commodities
           </h2>
+
           <p className="mt-4 text-white/65 text-[15px] leading-relaxed">
-            We specialize in the import and export of premium-quality
-            agricultural commodities. Beyond these, we can source a wide
-            variety of products based on customer requirements through our
-            worldwide supplier network.
+            We specialize in the import and export of premium-quality agricultural
+            commodities. Beyond these, we can source a wide variety of products
+            based on customer requirements through our worldwide supplier network.
           </p>
         </Reveal>
+
+        {/* Right Image */}
+        <Reveal delay={0.2}>
+          <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+            <img
+              src="/images/pulses-1.jpg"
+              alt="Agricultural Products"
+              className="w-full h-[350px] object-cover transition-transform duration-500 hover:scale-105"
+            />
+          </div>
+        </Reveal>
+      </div>
 
         <RevealGroup className="mt-14 grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {PRODUCTS.map(({ name, desc, icon: Icon }) => (

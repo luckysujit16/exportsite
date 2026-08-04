@@ -1,5 +1,6 @@
 import { MapPin, Globe2 } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion";
+import aboutImg from "../public/images/about.jpg" 
 
 export default function About() {
   return (
@@ -9,13 +10,20 @@ export default function About() {
           <p className="eyebrow text-[12px] tracking-[0.25em] text-secondary font-semibold mb-4">
             ABOUT US
           </p>
-          <h2 className="font-display font-semibold text-3xl md:text-4xl text-ink leading-tight">
-            Connecting buyers to trusted suppliers, worldwide
-          </h2>
+           <div className="mt-8 rounded-2xl overflow-hidden shadow-lg border border-primary/10">
+            <img
+              src="../images/export-3.jpg"
+              alt="Global Import Export Network"
+              className="w-full h-[320px] object-cover transition-transform duration-500 hover:scale-105"
+            />
+          </div>          
         </Reveal>
 
         <Reveal delay={0.1} className="space-y-6 text-ink/75 text-[15px] leading-relaxed">
-          <p>
+        <h2 className="font-display font-semibold text-3xl md:text-4xl text-ink leading-tight">
+            Connecting buyers to trusted suppliers, worldwide
+          </h2>
+          <p className="mb-4">
             SJFK FINTECH PRIVATE LIMITED is based in{" "}
             <strong className="text-ink">Navi Mumbai, Maharashtra, India</strong>
             , one of the country&rsquo;s leading commercial and logistics
