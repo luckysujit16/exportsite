@@ -21,16 +21,14 @@ export default function Navbar() {
     <header className="sticky top-0 z-40 bg-ink/95 backdrop-blur border-b border-white/10">
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-8 h-16">
         <a href="#top" className="flex items-center shrink-0">
-          <span className="bg-white rounded-md px-3 py-1.5 flex items-center">
-            <Image
-              src="/images/logo.png"
-              alt="SJFK FINTECH PRIVATE LIMITED"
-              width={250}
-              height={90}
-              priority
-              className="h-8 w-auto"
-            />
-          </span>
+          <Image
+            src="/images/logo-white.png"
+            alt="SJFK FINTECH PRIVATE LIMITED"
+            width={250}
+            height={90}
+            priority
+            className="h-9 md:h-11 w-auto"
+          />
         </a>
 
         <ul className="hidden md:flex items-center gap-8">
