@@ -3,6 +3,12 @@
 import { Wheat, Flame, Carrot, CircleDot, Sprout } from "lucide-react";
 import { motion } from "framer-motion";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 const PRODUCTS = [
   {
@@ -32,6 +38,14 @@ const PRODUCTS = [
   },
 ];
 
+const SLIDER1 = [
+  {src: "../images/pulses-1.jpg", alt: "Agricultural Products Pulses", className:"w-full h-[350px] object-cover transition-transform duration-500 hover:scale-105"},
+  {src: "../images/spices-1.jpg", alt: "Agricultural Products Spices", className:"w-full h-[350px] object-cover transition-transform duration-500 hover:scale-105"},
+  {src: "../images/fresh-vegetables.jpg", alt: "Agricultural Products vegetabels", className:"w-full h-[350px] object-cover transition-transform duration-500 hover:scale-105"},
+  {src: "../images/onions.jpg", alt: "Agricultural Products onions", className:"w-full h-[350px] object-cover transition-transform duration-500 hover:scale-105"},
+  {src: "../images/potato.jpg", alt: "Agricultural Products onions", className:"w-full h-[350px] object-cover transition-transform duration-500 hover:scale-105"},
+]
+
 export default function Products() {
   return (
     <section id="products" className="bg-ink text-white">
@@ -54,16 +68,33 @@ export default function Products() {
           </p>
         </Reveal>
 
-        {/* Right Image */}
-        <Reveal delay={0.2}>
-          <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-            <img
-              src="/images/pulses-1.jpg"
-              alt="Agricultural Products"
-              className="w-full h-[350px] object-cover transition-transform duration-500 hover:scale-105"
-            />
-          </div>
-        </Reveal>
+        {/* Right Image Slider */}
+      <Reveal delay={0.2}>
+        <div className="rounded-xl overflow-hidden shadow-2xl h-[350px] ">
+          <Swiper
+            modules={[Autoplay, Pagination, Navigation]}
+            slidesPerView={1}
+            spaceBetween={0}
+            loop
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            pagination={{ clickable: true }}
+            navigation
+          >
+            {SLIDER1.map(({ src, alt, className }, index) => (
+              <SwiperSlide key={index}>
+                <img
+                  src={src}
+                  alt={alt}
+                  className={`w-full h-[420px] object-cover bg-white ${className || ""}`}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </Reveal>
       </div>
 
         <RevealGroup className="mt-14 grid sm:grid-cols-2 lg:grid-cols-5 gap-4">

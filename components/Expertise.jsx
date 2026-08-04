@@ -60,7 +60,7 @@ export default function Expertise() {
 
       {/* Right Image Slider */}
       <Reveal delay={0.2}>
-        <div className="rounded-2xl overflow-hidden shadow-2xl h-full">
+        <div className="rounded-xl overflow-hidden shadow-2xl h-[350px] ">
           <Swiper
             modules={[Autoplay, Pagination, Navigation]}
             slidesPerView={1}
@@ -78,7 +78,7 @@ export default function Expertise() {
                 <img
                   src={src}
                   alt={alt}
-                  className={`w-full h-[420px] object-cover ${className || ""}`}
+                  className={`w-full h-[420px] object-cover bg-white ${className || ""}`}
                 />
               </SwiperSlide>
             ))}
