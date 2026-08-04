@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: #0e2e50;
+  background-color: #ffffff;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+}
+
+/* --- Signature element: cargo manifest ticker --- */
+.manifest-track {
+  display: flex;
+  width: max-content;
+  animation: manifest-scroll 28s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .manifest-track {
+    animation: none;
+  }
+  .route-dot {
+    animation: none !important;
+  }
+  .route-path {
+    animation: none;
+  }
+}
+
+@keyframes manifest-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* --- Signature element: hero trade route line --- */
+.route-path {
+  stroke-dasharray: 6 10;
+  animation: dash-flow 3s linear infinite;
+}
+
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -160;
+  }
+}
+
+.route-dot {
+  animation: route-travel 6s ease-in-out infinite;
+  offset-rotate: 0deg;
+}
+
+@keyframes route-travel {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+/* Custom underline accent for section eyebrows */
+.eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 28px;
+  height: 2px;
+  background-color: #ff6922;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+/* Focus visibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #00b98e;
+  outline-offset: 3px;
+}
