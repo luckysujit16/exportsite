@@ -1,12 +1,71 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, ShieldCheck } from "lucide-react";
 import { fadeUp, stagger } from "@/components/motion";
 
 const ROUTE_D = "M 60 300 C 140 340, 180 200, 210 190 S 320 60, 370 40";
 
+const HEADLINE_PART_1 = "Global import & export";
+const HEADLINE_ACCENT = " solutions";
+const HEADLINE_PART_2 = " you can trust";
+const HEADLINE_FULL = HEADLINE_PART_1 + HEADLINE_ACCENT + HEADLINE_PART_2;
+
+function useTypewriter(text, { startDelay = 500, speed = 45 } = {}) {
+  const [count, setCount] = useState(0);
+  const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (prefersReducedMotion) {
+      setCount(text.length);
+      setDone(true);
+      return;
+    }
+
+    let i = 0;
+    let intervalId;
+
+    const startTimeout = setTimeout(() => {
+      intervalId = setInterval(() => {
+        i += 1;
+        setCount(i);
+        if (i >= text.length) {
+          clearInterval(intervalId);
+          setDone(true);
+        }
+      }, speed);
+    }, startDelay);
+
+    return () => {
+      clearTimeout(startTimeout);
+      clearInterval(intervalId);
+    };
+  }, [text, startDelay, speed]);
+
+  return { count, done };
+}
+
 export default function Hero() {
+  const { count: typedCount, done: typingDone } = useTypewriter(
+    HEADLINE_FULL,
+    { startDelay: 550, speed: 40 }
+  );
+
+  const part1End = HEADLINE_PART_1.length;
+  const accentEnd = part1End + HEADLINE_ACCENT.length;
+
+  const typedPart1 = HEADLINE_FULL.slice(0, Math.min(typedCount, part1End));
+  const typedAccent = HEADLINE_FULL.slice(
+    part1End,
+    Math.min(typedCount, accentEnd)
+  );
+  const typedPart2 = HEADLINE_FULL.slice(accentEnd, typedCount);
+
   return (
     <section
       id="top"
@@ -24,8 +83,17 @@ export default function Hero() {
             variants={fadeUp}
             className="font-display font-semibold text-[2.5rem] leading-[1.08] md:text-[3.4rem] md:leading-[1.06]"
           >
-            Global import &amp; export
-            <span className="text-primary"> solutions</span> you can trust
+            <span aria-hidden="true">
+              {typedPart1}
+              <span className="text-primary">{typedAccent}</span>
+              {typedPart2}
+              <span
+                className={`inline-block w-[3px] md:w-[4px] -mb-1 md:-mb-1.5 h-[0.85em] ml-1 bg-primary align-middle ${
+                  typingDone ? "animate-pulse" : "opacity-100"
+                }`}
+              />
+            </span>
+            <span className="sr-only">{HEADLINE_FULL}</span>
           </motion.h1>
           <motion.p
             variants={fadeUp}
