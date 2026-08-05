@@ -39,11 +39,11 @@ const PRODUCTS = [
 ];
 
 const SLIDER1 = [
-  {src: "../images/pulses-1.jpg", alt: "Agricultural Products Pulses", className:"w-full h-[350px] object-cover transition-transform duration-500 hover:scale-105"},
-  {src: "../images/spices-1.jpg", alt: "Agricultural Products Spices", className:"w-full h-[350px] object-cover transition-transform duration-500 hover:scale-105"},
-  {src: "../images/fresh-vegetables.jpg", alt: "Agricultural Products vegetabels", className:"w-full h-[350px] object-cover transition-transform duration-500 hover:scale-105"},
-  {src: "../images/onions.jpg", alt: "Agricultural Products onions", className:"w-full h-[350px] object-cover transition-transform duration-500 hover:scale-105"},
-  {src: "../images/potato.jpg", alt: "Agricultural Products onions", className:"w-full h-[350px] object-cover transition-transform duration-500 hover:scale-105"},
+  {src: "../images/pulses-1.jpg", alt: "Agricultural Products Pulses"},
+  {src: "../images/spices-1.jpg", alt: "Agricultural Products Spices"},
+  {src: "../images/fresh-vegetables.jpg", alt: "Agricultural Products vegetabels"},
+  {src: "../images/onions.jpg", alt: "Agricultural Products onions"},
+  {src: "../images/potato.jpg", alt: "Agricultural Products onions"},
 ]
 
 export default function Products() {
@@ -70,7 +70,7 @@ export default function Products() {
 
         {/* Right Image Slider */}
       <Reveal delay={0.2}>
-        <div className="rounded-xl overflow-hidden shadow-2xl h-[350px] ">
+        <div className="rounded-xl overflow-hidden shadow-2xl h-[240px] sm:h-[300px] md:h-[360px] lg:h-[420px]">
           <Swiper
             modules={[Autoplay, Pagination, Navigation]}
             slidesPerView={1}
@@ -82,13 +82,14 @@ export default function Products() {
             }}
             pagination={{ clickable: true }}
             navigation
+            className="h-full"
           >
-            {SLIDER1.map(({ src, alt, className }, index) => (
+            {SLIDER1.map(({ src, alt }, index) => (
               <SwiperSlide key={index}>
                 <img
                   src={src}
                   alt={alt}
-                  className={`w-full h-[420px] object-cover bg-white ${className || ""}`}
+                  className="w-full h-full object-cover bg-white transition-transform duration-500 hover:scale-105"
                 />
               </SwiperSlide>
             ))}

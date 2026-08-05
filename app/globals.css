@@ -86,6 +86,20 @@ h1, h2, h3, h4, .font-display {
   vertical-align: middle;
 }
 
+/* Scale down Swiper nav arrows on small screens so they don't
+   crowd the slide on narrow viewports */
+.swiper-button-next,
+.swiper-button-prev {
+  --swiper-navigation-size: 20px;
+}
+
+@media (min-width: 768px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    --swiper-navigation-size: 26px;
+  }
+}
+
 /* Focus visibility */
 a:focus-visible,
 button:focus-visible {

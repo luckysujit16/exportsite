@@ -14,7 +14,7 @@ export default function About() {
             <img
               src="../images/export-3.jpg"
               alt="Global Import Export Network"
-              className="w-full h-[320px] object-cover transition-transform duration-500 hover:scale-105"
+              className="w-full h-[220px] sm:h-[280px] md:h-[320px] object-cover transition-transform duration-500 hover:scale-105"
             />
           </div>          
         </Reveal>
